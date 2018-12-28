@@ -8,10 +8,10 @@
 void my_putstr(char *str)
 {
   while(*str != '\0')
-    {
-      write(1, str, 1);
-      *str++;
-    }
+  {
+    write(1, str, 1);
+    *str++;
+  }
 }
 
 
@@ -30,15 +30,15 @@ void my_sapin(int value)
   int count_col = 7;
   
   for( i = 0; i < value; i++)
-    {
-      num_col = count_col - (2 * ((i+1) / 2));
-      count_col = num_col;
+  {
+    num_col = count_col - (2 * ((i+1) / 2));
+    count_col = num_col;
       
-      for( l = 0; l < (4 + i); l++)
-	{
-	  count_col = count_col + 2;
-	}
-    }
+    for( l = 0; l < (4 + i); l++)
+	  {
+	    count_col = count_col + 2;
+	  }
+  }
   
   //printf("nombre de colonnes totales est %d\n", num_col);
   
@@ -54,30 +54,30 @@ void my_sapin(int value)
   //créer les triangles
   
   for(index = 1; index <= value; index++)
-    {
-      for(l = 0; l < (size_l + i_line); l++)
-	{
-	  j--;
-	  k++;
-	  for(c = 0; c < num_col; c++)
+  {
+    for(l = 0; l < (size_l + i_line); l++)
+	  {
+	    j--;
+	    k++;
+	    for(c = 0; c < num_col; c++)
 	    {
 	      if( c <= j || c >= k)
-		{
-		  write(1, " ", 1);
-		}
+		    {
+		      write(1, " ", 1);
+		    }
 	      if( c > j && c < k)
-		{
-		  my_putstr(GREEN); //color green
-		  write(1, "*", 1);
-		  my_putstr(NRML); //color normal
-		}
+		    {
+		      my_putstr(GREEN); //color green
+		      write(1, "*", 1);
+		      my_putstr(NRML); //color normal
+		    }
 	    }
 	  write(1, "\n", 1);
-	}
-      k = k - 1 - ((index + 1) / 2);
-      j = j + 1 + ((index + 1) / 2);
-      i_line++;
-    }
+	  }
+    k = k - 1 - ((index + 1) / 2);
+    j = j + 1 + ((index + 1) / 2);
+    i_line++;
+  }
   
 
 // créer le tronc
@@ -87,35 +87,35 @@ void my_sapin(int value)
   k = (num_col / 2) + (value / 2);
   
   for(l = 0; l < value; l++)
-    {
-      for(c = 0; c < num_col; c++)
-	{
-	  if( c < j || c > k)
+  {
+    for(c = 0; c < num_col; c++)
+	  {
+	    if( c < j || c > k)
 	    {
 	      write(1, " ", 1);
 	    }
-	  if( c >= j && c <= k)
+	    if( c >= j && c <= k)
 	    {
 	      my_putstr(BRWN); //brown
 	      write(1, "|", 1);
 	      my_putstr(NRML);//normal color
 	    }
-	}
-      write(1, "\n", 1);
-    }
+	  }
+    write(1, "\n", 1);
+  }
 }
 
 
 int main(int argc, char *argv[])
 {
-      if (argc == 2)
+  if (argc == 2)
 	{
-	    int value = atoi(argv[1]);
-      //int value = 8;
-	    system("clear"); //clear l'écran pour faire joli
-	    my_sapin(value);
+	  int value = atoi(argv[1]);
+    //int value = 8;
+	  system("clear"); //clear l'écran pour faire joli
+	  my_sapin(value);
 	}
-      else
+  else
 	{
 	  printf("ERROR nombre d'arguments\n");
 	}
